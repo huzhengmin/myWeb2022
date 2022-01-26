@@ -36,7 +36,8 @@ public class MyBatisUtil {
     public static SqlSession getSqlSession() {
         SqlSession session = null;
         if (factory != null) {
-            session = factory.openSession();
+            //自动提交
+            session = factory.openSession(true);
         }
         return session;
     }

@@ -22,7 +22,7 @@ namespace ：必须有值，自定义的唯一字符串
         values(#{id},#{name},#{email},#{age})
     </insert>
     <update id="updateStudent">
-         update student set age = #{age} where id=#{id}
+         update student set name = #{name} where id=#{id}
     </update>
     <delete id="deleteStudent">
         delete from student where id=#{ids}

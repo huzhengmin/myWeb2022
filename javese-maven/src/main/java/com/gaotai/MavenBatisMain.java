@@ -1,5 +1,7 @@
 package com.gaotai;
 
+import com.gaotai.dao.IStudentDao;
+import com.gaotai.dao.impl.impl.StudentDao;
 import com.gaotai.entity.Student;
 import com.gaotai.utils.MyBatisUtil;
 import org.apache.ibatis.io.Resources;
@@ -131,5 +133,43 @@ public class MavenBatisMain {
         //studentList.forEach( student -> System.out.println(student));
         studentList.forEach(System.out::println);
         session.close();
+    }
+
+    @Test
+    public void testStuList() {
+        System.out.println("------------------->testStuList()");
+        IStudentDao studentDao = new StudentDao();
+        List<Student> studentList = studentDao.selectStudents();
+        studentList.forEach(System.out::println);
+    }
+
+    @Test
+    public void testStuUpdate() {
+        System.out.println("------------------->testStuUpdate()");
+        IStudentDao studentDao = new StudentDao();
+        Student student = new Student();
+        student.setId(1005);
+        student.setName("张飞");
+        System.out.println(studentDao.updateStudent(student));
+
+    }
+
+    @Test
+    public void testStuInsert() {
+        System.out.println("------------------->testStuInsert()");
+        IStudentDao studentDao = new StudentDao();
+        Student student = new Student();
+        student.setId(1006);
+        student.setName("张飞3");
+        student.setAge(123);
+        System.out.println(studentDao.insertStudent(student));
+
+    }
+
+    @Test
+    public void testStuDelete() {
+        System.out.println("------------------->testStuDelete()");
+        IStudentDao studentDao = new StudentDao();
+        System.out.println(studentDao.deleteStudent(1006));
     }
 }
